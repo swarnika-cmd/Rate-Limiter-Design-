@@ -16,7 +16,6 @@ public class FixedWindowRateLimiter implements RateLimiter {
     public synchronized boolean allowRequest() {
         long now = System.currentTimeMillis();
         
-        // Check if we passed the current window
         if (now - windowStart >= windowSizeMs) {
             windowStart = now;
             counter = 0;

@@ -15,7 +15,6 @@ public class RateLimitingService {
     }
 
     public boolean isAllowed(String key) {
-        // Create a new rate limiter for the key if it doesn't exist
         limiters.putIfAbsent(key, createLimiter());
         return limiters.get(key).allowRequest();
     }

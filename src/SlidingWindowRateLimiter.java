@@ -16,7 +16,6 @@ public class SlidingWindowRateLimiter implements RateLimiter {
     public synchronized boolean allowRequest() {
         long now = System.currentTimeMillis();
         
-        // Remove timestamps that are outside the current sliding window
         while (!requestTimestamps.isEmpty() && now - requestTimestamps.peek() >= windowSizeMs) {
             requestTimestamps.poll();
         }
